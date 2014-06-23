@@ -19,62 +19,62 @@
 
 # org.apache.cordova.file-transfer
 
-这个插件允许你上传和下载文件。
+這個外掛程式允許你上傳和下載檔案。
 
-## 安装
+## 安裝
 
     cordova plugin add org.apache.cordova.file-transfer
     
 
-## 支持的平台
+## 支援的平臺
 
-*   亚马逊火 OS
-*   Android 系统
+*   亞馬遜火 OS
+*   Android 系統
 *   黑莓 10 *
 *   iOS
 *   Windows Phone 7 和 8 *
 *   Windows 8 *
 
-**不支持 `onprogress` ，也不 `abort()` *
+**不支援 `onprogress` ，也不 `abort()` *
 
-# 文件传输
+# 檔案傳輸
 
-`FileTransfer`对象提供一种方法来使用 HTTP 多部分 POST 请求的文件上传和下载文件，以及。
+`FileTransfer`物件提供一種方法來使用 HTTP 多部分 POST 請求的檔上傳和下載檔案，以及。
 
-## 属性
+## 屬性
 
-*   **onprogress**： 每当一块新的数据传输的时候，使用 `ProgressEvent`来回调函数 。*(Function)*
+*   **onprogress**： 使用調用 `ProgressEvent` 每當一塊新的資料傳輸。*（函數）*
 
 ## 方法
 
-*   **upload**： 将文件发送到服务器。
+*   **上傳**： 將檔發送到伺服器。
 
-*   **download**： 从服务器上下载文件。
+*   **下載**： 從伺服器上下載檔案。
 
-*   **abort**: 取消该对象正在进行的文件传输任务。
+*   **中止**: 中止正在進行轉讓。
 
-## 上传
+## 上傳
 
-**Parameters**：
+**參數**：
 
-*   **fileURL**： 表示文件在设备上的文件系统 URL。 为向后兼容性，这也可以将设备上的文件的完整路径。 （请参见 [向后兼容性注意到] 下面)
+*   **fileURL**： 表示檔在設備上的檔案系統 URL。 為向後相容性，這也可以將設備上的檔的完整路徑。 （請參見 [向後相容性注意到] 下面)
 
-*   **server**：接收文件的服务器地址，由`encodeURI()`编码的.
+*   **伺服器**： 伺服器以接收該檔，由編碼的 URL`encodeURI()`.
 
-*   **successCallback**： 传递一个`FileEntry` 对象回调 。*(Function)*
+*   **successCallback**： 傳遞一個回檔 `Metadata` 物件。*（函數）*
 
-*   **errorCallback**： 如果出现 `Metadata`检索错误则执行回调函数 。调用 `FileTransferError` 对象。*(Function)*
+*   **errorCallback**： 回檔的執行如果出現檢索錯誤 `Metadata` 。調用與 `FileTransferError` 物件。*（函數）*
 
-*   **trustAllHosts**: 可选参数，默认值为 `false` 。 如果设置为 `true` ，它将接受所有的安全证书。 由于Android拒绝自签名的安全证书，这是很有用的。 不建议用于生产用途。 支持 Android 和 iOS 。 *(boolean)*
+*   **trustAllHosts**: 可選參數，預設值為 `false` 。 如果設置為 `true` ，它可以接受的所有安全證書。 由於 Android 拒絕自行簽署式安全證書，這非常有用。 不建議供生產使用。 在 Android 和 iOS 上受支援。 *(布林值)*
 
-*   **选项**： 可选参数*（对象）*。有效的密钥：
+*   **選項**： 可選參數*（物件）*。有效的金鑰：
     
-    *   **fileKey**： 表单元素的名称。默认值为 `file` 。(DOMString)
-    *   **fileName**： 要保存在服务器上的文件使用的文件名称。默认值为 `image.jpg` 。 (DOMString)
-    *   **mimeType**： 要上传的mime 类型的数据 。默认值为 `image/jpeg` 。(DOMString)
-    *   **params**：通过HTTP请求发送到服务器的一系列可选键/值对。(Object) 
-    *   **chunkedMode**： 是否上传数据块流模式。默认值为 `true` 。(Boolean)
-    *   **headers**： 请求头键/值对。使用数组来指定多个值。(Object)
+    *   **fileKey**： 表單元素的名稱。預設值為 `file` 。() DOMString
+    *   **檔案名**： 要保存在伺服器上的檔時使用的檔案名稱。預設值為 `image.jpg` 。() DOMString
+    *   **mimeType**： 要上傳的資料的 mime 類型。預設值為 `image/jpeg` 。() DOMString
+    *   **params**： 一組可選的鍵/值對中的 HTTP 要求的傳遞。（物件）
+    *   **chunkedMode**： 是否要分塊流式處理模式中的資料上載。預設值為 `true` 。(布林值)
+    *   **標題**： 一張地圖的標頭名稱/標頭值。使用陣列來指定多個值。（物件）
 
 ### 示例
 
@@ -108,7 +108,7 @@
     ft.upload(fileURL, encodeURI("http://some.server.com/upload.php"), win, fail, options);
     
 
-### 与上传的标头和进度事件 （Android 和 iOS 只） 的示例
+### 與上傳的標頭和進度事件 （Android 和 iOS 只） 的示例
 
     function win(r) {
         console.log("Code = " + r.responseCode);
@@ -146,39 +146,39 @@
 
 ## FileUploadResult
 
-`FileUploadResult` 对象被传递到 `FileTransfer` 对象的 `upload()` 方法的成功回调。
+A `FileUploadResult` 物件傳遞給成功回檔的 `FileTransfer` 物件的 `upload()` 方法。
 
-### 属性
+### 屬性
 
-*   **bytesSent**：已经向服务器所上传的字节数 。(long)
+*   **位元組發送**： 作為上載的一部分發送到伺服器的位元組數。(長)
 
-*   **responseCode**： 由服务器返回的 HTTP 响应代码。(long)
+*   **responseCode**： 由伺服器返回的 HTTP 回應代碼。(長)
 
-*   **rseponse**： 服务器端返回的HTTP响应数据。(DOMString)
+*   **回應**： 由伺服器返回的 HTTP 回應。() DOMString
 
-*   **标题**： 由服务器的 HTTP 响应标头。（对象）
+*   **標題**： 由伺服器的 HTTP 回應標頭。（物件）
     
-    *   目前支持的 iOS 只。
+    *   目前支援的 iOS 只。
 
 ### iOS 的怪癖
 
-*   不支持 `responseCode` 或`bytesSent`.
+*   不支援 `responseCode` 或`bytesSent`.
 
-## 下载
+## 下載
 
-**参数**：
+**參數**：
 
-*   **source**： 要下载的文件服务器的 URL，由`encodeURI()`编码的。.
+*   **來源**： 要下載的檔，如由編碼的伺服器的 URL`encodeURI()`.
 
-*   **目标**： 表示文件在设备上的文件系统 url。 为向后兼容性，这也可以将设备上的文件的完整路径。 （请参见 [向后兼容性注意到] 下面)
+*   **目標**： 表示檔在設備上的檔案系統 url。 為向後相容性，這也可以將設備上的檔的完整路徑。 （請參見 [向後相容性注意到] 下面)
 
-*   **successCallback**： 回调函数传递 `FileEntry` 对象。*(Function)*
+*   **successCallback**： 傳遞一個回檔 `FileEntry` 物件。*（函數）*
 
-*   **errorCallback**： 如果发生`Metadata`检索时出现错误，则将执行的回调 。调用`FileTransferError` 对象。*(Function)*
+*   **errorCallback**： 如果錯誤發生在檢索時將執行的回檔 `Metadata` 。調用與 `FileTransferError` 物件。*（函數）*
 
-*   **trustAllHosts**: 可选参数，默认值为 `false` 。 如果设置为 `true` ，它可以接受的所有安全证书。 这是有用的，因为 Android 拒绝自行签名的安全证书。 不建议供生产使用。 在 Android 和 iOS 上受支持。 *(布尔值)*
+*   **trustAllHosts**: 可選參數，預設值為 `false` 。 如果設置為 `true` ，它可以接受的所有安全證書。 這是有用的因為 Android 拒絕自行簽署式安全證書。 不建議供生產使用。 在 Android 和 iOS 上受支援。 *(布林值)*
 
-*   **options**： 可选参数，目前只支持下载的文件表头 （如授权 （基本身份验证） 等）。
+*   **選項**： 可選參數，目前只支援標題 （如授權 （基本驗證） 等）。
 
 ### 示例
 
@@ -192,7 +192,7 @@
         uri,
         fileURL,
         function(entry) {
-            console.log("download complete: " + entry.fullPath);
+            console.log("download complete: " + entry.toURL());
         },
         function(error) {
             console.log("download error source " + error.source);
@@ -208,9 +208,9 @@
     );
     
 
-## abort
+## 中止
 
-取消该正在进行的文件传输任务。Onerror 回调函数传递一个具有FileTransferError.ABORT_ERR 错误代码的 FileTransferError 对象。
+中止正在進行轉讓。Onerror 回檔傳遞的錯誤代碼為 FileTransferError.ABORT_ERR 的 FileTransferError 物件。
 
 ### 示例
 
@@ -240,42 +240,44 @@
 
 ## FileTransferError
 
-当出现一个错误的时候， `FileTransferError` 对象传递错误回调函数。
+A `FileTransferError` 物件傳遞到錯誤回檔時出現錯誤。
 
-### 属性
+### 屬性
 
-*   **code**： 下面列出了一个预定义的错误代码。(Number)
+*   **代碼**： 下面列出的預定義的錯誤代碼之一。（人數）
 
-*   **源**： 源的 URL。（字符串）
+*   **源**： 源的 URL。（字串）
 
-*   **目标**： 到目标 URL。（字符串）
+*   **目標**： 到目標 URL。（字串）
 
-*   **http_status**： HTTP 状态码。此属性仅适用于当一个响应从 HTTP 连接被收到时。(Number)
+*   **HTTP_status**： HTTP 狀態碼。從 HTTP 連接收到一個回應代碼時，此屬性才可用。（人數）
+
+*   **例外**： 要麼 e.getMessage 或 e.toString （字串）
 
 ### 常量
 
-*   `FileTransferError.FILE_NOT_FOUND_ERR`
-*   `FileTransferError.INVALID_URL_ERR`
-*   `FileTransferError.CONNECTION_ERR`
-*   `FileTransferError.ABORT_ERR`
+*   1 = `FileTransferError.FILE_NOT_FOUND_ERR`
+*   2 = `FileTransferError.INVALID_URL_ERR`
+*   3 = `FileTransferError.CONNECTION_ERR`
+*   4 = `FileTransferError.ABORT_ERR`
 
-## 向后兼容性注意到
+## 向後相容性注意到
 
-以前版本的这个插件将只接受设备绝对文件路径作为源的上载，或为下载的目标。这些路径通常将窗体的
+以前版本的這個外掛程式將只接受設備絕對檔路徑作為源的上載，或為下載的目標。這些路徑通常將表單的
 
     /var/mobile/Applications/<application UUID>/Documents/path/to/file  (iOS)
     /storage/emulated/0/path/to/file                                    (Android)
     
 
-为向后兼容性，这些路径仍被接受，和如果您的应用程序已录得像这些持久性存储区中的路径，然后他们可以继续使用。
+為向後相容性，這些路徑仍被接受，和如果您的應用程式已錄得像這些持久性存儲區中的路徑，然後他們可以繼續使用。
 
-这些路径以前被暴露在 `fullPath` 属性的 `FileEntry` 和 `DirectoryEntry` 由文件插件返回的对象。 新版本的文件的插件，不过，不再公开这些 JavaScript 的路径。
+這些路徑以前被暴露在 `fullPath` 屬性的 `FileEntry` 和 `DirectoryEntry` 由檔外掛程式返回的物件。 新版本的檔的外掛程式，不過，不再公開這些 JavaScript 的路徑。
 
-如果您要升级到一个新的 (1.0.0 或更高版本） 版本的文件，和你以前一直在使用 `entry.fullPath` 作为的参数 `download()` 或 `upload()` ，那么您将需要更改您的代码，而使用的文件系统的 Url。
+如果您要升級到一個新的 (1.0.0 或更高版本） 版本的檔，和你以前一直在使用 `entry.fullPath` 作為的參數 `download()` 或 `upload()` ，那麼您將需要更改您的代碼，而使用的檔案系統的 Url。
 
-`FileEntry.toURL()`和 `DirectoryEntry.toURL()` 返回的表单文件系统 URL
+`FileEntry.toURL()`和 `DirectoryEntry.toURL()` 返回的表單檔案系統 URL
 
     cdvfile://localhost/persistent/path/to/file
     
 
-可以使用在中两者的绝对文件路径位置 `download()` 和 `upload()` 方法。
+可以使用在中兩者的絕對檔路徑位置 `download()` 和 `upload()` 方法。
